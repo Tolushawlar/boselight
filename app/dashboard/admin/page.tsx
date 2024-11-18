@@ -75,7 +75,7 @@ export type User = {
   lastActive: string;
 };
 
-export const columns: ColumnDef<User>[] = [
+const columns: ColumnDef<User>[] = [
   {
     id: "select",
     header: ({ table }) => (
