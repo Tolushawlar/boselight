@@ -2,9 +2,11 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+
+import { Logo } from "./Logo";
+import { Button } from "@/components/ui/button";
 
 export function Header() {
   const [hasScrolled, setHasScrolled] = useState(false);
@@ -36,9 +38,7 @@ export function Header() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-bold">Boslight</span>
-          </Link>
+          <Logo />
         </motion.div>
 
         <motion.nav

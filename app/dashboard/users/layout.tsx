@@ -21,6 +21,7 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { Logo } from "@/components/Logo";
 
 const NavItems = [
   { icon: Home, label: "Dashboard", href: "#" },
@@ -35,8 +36,8 @@ const UserDashboardLayout = ({ children }: { children: ReactNode }) => {
     <SidebarProvider>
       <div className="flex min-h-screen bg-[#F9F5E8] flex-1">
         <Sidebar>
-          <SidebarHeader className="flex h-16 items-center justify-center">
-            <h2 className="px-4 text-lg font-semibold">User Dashboard</h2>
+          <SidebarHeader className="flex h-16 pl-6 justify-center">
+            <Logo />
           </SidebarHeader>
 
           <SidebarContent>

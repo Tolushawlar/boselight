@@ -18,7 +18,7 @@ export function Newsletter() {
             <div key={i} className="bg-white rounded-3xl p-6 shadow-sm">
               <div className="mb-4 overflow-hidden rounded-2xl">
                 <Image
-                  src="/placeholder.svg?height=300&width=400"
+                  src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80"
                   alt="Group of children smiling"
                   width={400}
                   height={300}

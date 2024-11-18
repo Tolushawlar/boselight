@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Logo } from "@/components/Logo";
 
 export default function RegistrationPage() {
   const [formData, setFormData] = useState({
@@ -38,25 +39,7 @@ export default function RegistrationPage() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-12 w-12"
-            >
-              <path
-                d="M12 6C11.0538 4.37665 9.36418 3.17708 7.5 3.17708C4.6371 3.17708 2.29167 5.52251 2.29167 8.38541C2.29167 14.0833 12 20.8333 12 20.8333"
-                stroke="#2A9D8F"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              <path
-                d="M12 6C12.9462 4.37665 14.6358 3.17708 16.5 3.17708C19.3629 3.17708 21.7083 5.52251 21.7083 8.38541C21.7083 14.0833 12 20.8333 12 20.8333"
-                stroke="#E07A5F"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            </svg>
+            <Logo />
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
             Create an Account

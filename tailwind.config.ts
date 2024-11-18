@@ -22,6 +22,9 @@ export default {
         "3xl": "1760px",
         "4xl": "1920px",
       },
+      fontFamily: {
+        rubik: ["var(--font-rubik)"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
