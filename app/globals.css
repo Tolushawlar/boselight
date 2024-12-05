@@ -3,7 +3,10 @@
 @tailwind utilities;
 
 body {
-  font-family: Rubik, Helvetica, sans-serif;
+  font-family: Lato, Helvetica, sans-serif;
+}
+.fontTomorrow {
+  font-family: Tomorrow, sans-serif;
 }
 
 @layer utilities {

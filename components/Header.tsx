@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-
 import { Logo } from "./Logo";
 import { Button } from "@/components/ui/button";
 
@@ -47,19 +46,19 @@ export function Header() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="hidden md:flex items-center space-x-6"
         >
-          <Link href="/" className="text-sm font-medium">
+          {/* <Link href="/" className="text-sm font-medium">
             Home
-          </Link>
-          <Link href="#" className="text-sm font-medium">
+          </Link> */}
+          <Link href="#about" className="text-sm font-medium fontTomorrow">
             About Us
           </Link>
-          <Link href="#" className="text-sm font-medium">
-            Services
+          <Link href="#features" className="text-sm font-medium fontTomorrow">
+            Features
           </Link>
-          <Link href="#" className="text-sm font-medium">
-            Teams
+          <Link href="#faq" className="text-sm font-medium fontTomorrow">
+            FAQ‘s
           </Link>
-          <Link href="#" className="text-sm font-medium">
+          <Link href="#contact" className="text-sm font-medium fontTomorrow">
             Contact Us
           </Link>
         </motion.nav>
@@ -70,7 +69,7 @@ export function Header() {
           transition={{ duration: 0.5 }}
         >
           <Button
-            className="bg-[#E97B5F] hover:bg-[#E97B5F]/90 text-white"
+            className="bg-[#E97B5F] hover:bg-[#E97B5F]/90 text-white fontTomorrow" 
             onClick={() => push("/register")}
           >
             Register →

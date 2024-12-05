@@ -20,46 +20,36 @@ export function Footer() {
           <nav className="mb-8">
             <ul className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-gray-600">
               <li>
-                <Link href="#" className="hover:text-gray-900">
-                  Donations
+                <Link href="#" className="hover:text-gray-900 fontTomorrow">
+                  About Us
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-gray-900">
-                  Popular Causes
+                <Link href="#" className="hover:text-gray-900 fontTomorrow">
+                  Features
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-gray-900">
-                  UpComing Event
+                <Link href="#" className="hover:text-gray-900 fontTomorrow">
+                  FAQ‘s
                 </Link>
               </li>
               <li>
-                <Link href="#" className="hover:text-gray-900">
-                  Latest Blog
+                <Link href="#" className="hover:text-gray-900 fontTomorrow">
+                  Contact Us
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="#" className="hover:text-gray-900">
-                  Careers
+                  Register
                 </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-gray-900">
-                  Help
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="hover:text-gray-900">
-                  Privacy
-                </Link>
-              </li>
+              </li> */}
             </ul>
           </nav>
 
           {/* Copyright */}
           <div className="text-sm text-gray-500">
-            © 2023 Asra . All rights reserved.
+            © 2023 Boslight. All rights reserved.
           </div>
         </div>
       </div>
