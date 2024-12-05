@@ -4,12 +4,12 @@ import { Rubik } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 
 import "./globals.css";
-import '@fontsource/tomorrow/100.css';
-import '@fontsource/tomorrow/200.css';
-import '@fontsource/tomorrow/300.css';
-import '@fontsource/tomorrow/400.css';
-import '@fontsource/tomorrow/500.css';
-import '@fontsource/lato';
+import "@fontsource/tomorrow/100.css";
+import "@fontsource/tomorrow/200.css";
+import "@fontsource/tomorrow/300.css";
+import "@fontsource/tomorrow/400.css";
+import "@fontsource/tomorrow/500.css";
+import "@fontsource/lato";
 
 const rubik = Rubik({
   subsets: ["latin"],
