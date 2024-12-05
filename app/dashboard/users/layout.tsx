@@ -22,6 +22,7 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { Logo } from "@/components/Logo";
+import { SignOutButton } from "@clerk/nextjs";
 
 const NavItems = [
   { icon: Home, label: "Dashboard", href: "#" },
@@ -58,10 +59,12 @@ const UserDashboardLayout = ({ children }: { children: ReactNode }) => {
           <SidebarFooter>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton className="text-red-500 hover:text-red-600 hover:bg-red-50">
-                  <LogOut className="mr-2 h-4 w-4" />
-                  Logout
-                </SidebarMenuButton>
+                <SignOutButton>
+                  <SidebarMenuButton className="text-red-500 hover:text-red-600 hover:bg-red-50">
+                    <LogOut className="mr-2 h-4 w-4" />
+                    Logout
+                  </SidebarMenuButton>
+                </SignOutButton>
               </SidebarMenuItem>
             </SidebarMenu>
           </SidebarFooter>

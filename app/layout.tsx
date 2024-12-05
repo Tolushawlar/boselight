@@ -1,5 +1,8 @@
+import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Rubik } from "next/font/google";
+import { Toaster } from "@/components/ui/sonner";
+
 import "./globals.css";
 
 const rubik = Rubik({
@@ -19,8 +22,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${rubik.variable} antialiased`}>{children}</body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={`${rubik.variable} antialiased`}>
+          {children}
+          <Toaster
+            position="bottom-right"
+            toastOptions={{ duration: 5000 }}
+            richColors
+          />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
