@@ -23,7 +23,7 @@ export function DonationCard({
   title,
   description,
   headline,
-  image,
+  // image,
   // progress,
   // goal,
   index,
