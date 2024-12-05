@@ -9,33 +9,38 @@ export function Faq() {
     {
       question: "How does Boselight work?",
       answer:
-        "Boselight connects donors with people in need through a secure and transparent platform. We verify all cases and ensure your donation reaches the right person.",
+        "Boselight provides finanical services to people in need through a secure and transparent platform. We verify all cases and ensure your services reaches the right person.",
     },
     {
-      question: "Is my donation tax-deductible?",
+      question: "What are the eligibility criteria for a loan?",
       answer:
-        "Yes, all donations made through Boselight are tax-deductible. You'll receive a receipt for your records immediately after your donation.",
+        "Eligibility criteria may vary depending on the loan type, but generally include factors such as age, income, credit score, and employment status.",
     },
     {
-      question: "How do you verify cases?",
+      question: "How long does it take to get a loan approval?",
       answer:
-        "Our team thoroughly verifies each case through a multi-step process including document verification, personal interviews, and local partner validation.",
+        "Our loan approval process is efficient. You can often get a decision within 24-48 hours of application.",
+    },
+    {
+      question: "What are the repayment terms?",
+      answer:
+        "We offer flexible repayment terms to suit your financial needs. You can choose from various repayment tenures.",
     },
   ];
 
   const [openItem, setOpenItem] = useState<number | null>(1);
 
   return (
-    <div className="p-6 md:p-12 flex items-center justify-center">
+    <div id="faq" className="p-6 md:p-12 flex items-center justify-center">
       <div className="w-full max-w-6xl">
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
           <div>
             <h1 className="text-4xl font-bold tracking-tight text-[#3a3a3a] sm:text-5xl xl:text-6xl mb-4">
-              Find Answers to Your Donation Questions
+              Why You Should Choose Us
             </h1>
             <p className="text-[#3a3a3a] text-lg">
-              Et felis vitae ac venenatis lacus cras etiam risus scelerisque
-              auctor adipiscing in a porta
+              We provide transparency and build trust with our potential
+              customers.
             </p>
             <motion.svg
               initial={{ opacity: 0, pathLength: 0 }}
