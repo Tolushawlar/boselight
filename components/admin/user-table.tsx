@@ -17,7 +17,6 @@ import { ChevronDown, Plus } from "lucide-react";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
-
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -61,8 +60,6 @@ export const UserTable = ({ data }: { data: User[] }) => {
     },
   });
 
-  console.log({ data });
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -73,9 +70,11 @@ export const UserTable = ({ data }: { data: User[] }) => {
       <div className="p-4 space-y-4 md:space-y-0 md:flex md:items-center md:justify-between">
         <Input
           placeholder="Filter users..."
-          value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
+          value={
+            (table.getColumn("firstName")?.getFilterValue() as string) ?? ""
+          }
           onChange={(event) =>
-            table.getColumn("email")?.setFilterValue(event.target.value)
+            table.getColumn("firstName")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
@@ -111,35 +110,31 @@ export const UserTable = ({ data }: { data: User[] }) => {
           </Button>
         </div>
       </div>
-      <div className="overflow-x-auto">
-        <Table>
+      <div className="overflow-x-auto w-full">
+        <Table className="w-full table-auto">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableHead key={header.id}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                    </TableHead>
-                  );
-                })}
+                {headerGroup.headers.map((header) => (
+                  <TableHead key={header.id}>
+                    {flexRender(
+                      header.column.columnDef.header,
+                      header.getContext()
+                    )}
+                  </TableHead>
+                ))}
               </TableRow>
             ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows?.length ? (
+            {table.getRowModel().rows.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                >
+                <TableRow key={row.id}>
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
+                    <TableCell
+                      key={cell.id}
+                      className="whitespace-normal break-words"
+                    >
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()
@@ -161,6 +156,7 @@ export const UserTable = ({ data }: { data: User[] }) => {
           </TableBody>
         </Table>
       </div>
+
       <div className="flex flex-col-reverse md:flex-row items-center justify-end gap-4 p-4">
         <div className="flex-1 text-sm text-muted-foreground text-center md:text-left">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}

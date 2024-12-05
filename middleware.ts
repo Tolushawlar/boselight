@@ -13,24 +13,48 @@ export default clerkMiddleware(async (auth, req) => {
   const role = sessionClaims?.metadata?.role ?? "";
   const isAuthenticated = !!sessionClaims;
 
-  // Redirect unauthenticated users to home
+  const url = new URL(req.url);
+
+  // Redirect unauthenticated users to login
   if (!isAuthenticated && (admin(req) || user(req))) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
 
-  if (isAuthenticated) {
-    // Prevent authenticated users from accessing signin/signup
-    if (authRoutes(req)) {
-      return NextResponse.redirect(new URL("/", req.url));
-    }
+  // Prevent authenticated users from accessing login/register
+  if (isAuthenticated && authRoutes(req)) {
+    return NextResponse.redirect(new URL("/", req.url));
+  }
 
-    // Admin and SuperAdmin role access
-    if (admin(req) && ["superAdmin", "admin"].includes(role)) {
-      return NextResponse.redirect(new URL("/dashboard/admin", req.url));
-    }
+  // Redirect authenticated admin users from the landing page `/` to `/dashboard/admin`
+  if (
+    isAuthenticated &&
+    url.pathname === "/" &&
+    ["superAdmin", "admin"].includes(role)
+  ) {
+    return NextResponse.redirect(new URL("/dashboard/admin", req.url));
+  }
 
-    // Non-Admin role access
-    if (admin(req) && !["superAdmin", "admin"].includes(role)) {
+  // Redirect authenticated non-admin users from `/` to `/dashboard/users`
+  if (
+    isAuthenticated &&
+    url.pathname === "/" &&
+    !["superAdmin", "admin"].includes(role)
+  ) {
+    return NextResponse.redirect(new URL("/dashboard/users", req.url));
+  }
+
+  // Admin and SuperAdmin role access
+  if (admin(req)) {
+    if (["superAdmin", "admin"].includes(role)) {
+      return NextResponse.next(); // Allow access
+    } else {
+      return NextResponse.redirect(new URL("/dashboard/users", req.url));
+    }
+  }
+
+  // Non-Admin or SuperAdmin authenticated users
+  if (isAuthenticated && !["superAdmin", "admin"].includes(role)) {
+    if (!user(req)) {
       return NextResponse.redirect(new URL("/dashboard/users", req.url));
     }
   }
@@ -41,9 +65,8 @@ export default clerkMiddleware(async (auth, req) => {
 
 export const config = {
   matcher: [
-    // Skip Next.js internals and all static files, unless found in search params
+    // Match all routes except static files and Next.js internals
     "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
-    // Always run for API routes
     "/(api|trpc)(.*)",
   ],
 };

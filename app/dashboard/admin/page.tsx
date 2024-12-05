@@ -1,28 +1,34 @@
+import { clerkClient, currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
-import { checkRole } from "@/utils/roles";
-import { clerkClient } from "@clerk/nextjs/server";
 import { UserTable } from "@/components/admin/user-table";
 import { StatsCard } from "@/components/admin/StatsCard";
 
-export default async function AdminDashboard(params: {
-  searchParams: Promise<{ search?: string }>;
-}) {
+import { checkRole } from "@/utils/roles";
+
+export default async function AdminDashboard() {
   if (!checkRole("admin")) {
     redirect("/");
   }
-
-  const query = (await params.searchParams).search;
+  // Get the currently logged-in user's ID
+  const currentUserInfo = await currentUser();
+  const currentUserId = currentUserInfo?.id;
 
   const client = await clerkClient();
 
-  const users = query ? (await client.users.getUserList({ query })).data : [];
+  const { data } = await client.users.getUserList({
+    orderBy: "-created_at",
+  });
+
+  const filteredData = data.filter((user) => user.id !== currentUserId);
+
+  const plainData = JSON.parse(JSON.stringify(filteredData));
 
   return (
     <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-4 md:p-6">
       <StatsCard />
 
-      <UserTable data={users} />
+      <UserTable data={plainData ?? []} />
     </main>
   );
 }
