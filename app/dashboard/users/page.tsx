@@ -1,11 +1,7 @@
-"use client";
-
+import { currentUser } from "@clerk/nextjs/server";
 import { User, DollarSign, Calendar } from "lucide-react";
-import { useState } from "react";
-
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Card,
@@ -15,19 +11,12 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ProfileForm } from "@/components/user/profile-form";
 
-export default function UserDashboard() {
-  const [profileData, setProfileData] = useState({
-    name: "John Doe",
-    email: "john@example.com",
-    bio: "I'm passionate about making a difference in the world.",
-  });
+export default async function UserDashboard() {
+  const user = await currentUser();
 
-  const handleProfileUpdate = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle profile update logic here
-    console.log("Profile updated:", profileData);
-  };
+  const currentUserInfo = JSON.parse(JSON.stringify(user));
 
   return (
     <div className="flex-1 overflow-y-auto p-8">
@@ -94,7 +83,6 @@ export default function UserDashboard() {
           </CardContent>
         </Card>
       </div>
-
       <Tabs defaultValue="profile" className="w-full">
         <TabsList>
           <TabsTrigger value="profile">Profile</TabsTrigger>
@@ -113,57 +101,16 @@ export default function UserDashboard() {
               <div className="flex items-center space-x-4">
                 <Avatar className="h-20 w-20">
                   <AvatarImage
-                    src="/placeholder.svg?height=80&width=80"
+                    src={user?.imageUrl || ""}
                     alt="Profile picture"
                   />
-                  <AvatarFallback>JD</AvatarFallback>
+                  <AvatarFallback>
+                    {user?.firstName?.charAt(0) || "U"}
+                  </AvatarFallback>
                 </Avatar>
                 <Button>Change Picture</Button>
               </div>
-              <form onSubmit={handleProfileUpdate}>
-                <div className="space-y-1">
-                  <Label htmlFor="name">Name</Label>
-                  <Input
-                    id="name"
-                    value={profileData.name}
-                    onChange={(e) =>
-                      setProfileData({
-                        ...profileData,
-                        name: e.target.value,
-                      })
-                    }
-                  />
-                </div>
-                <div className="space-y-1">
-                  <Label htmlFor="email">Email</Label>
-                  <Input
-                    id="email"
-                    value={profileData.email}
-                    onChange={(e) =>
-                      setProfileData({
-                        ...profileData,
-                        email: e.target.value,
-                      })
-                    }
-                  />
-                </div>
-                <div className="space-y-1">
-                  <Label htmlFor="bio">Bio</Label>
-                  <Input
-                    id="bio"
-                    value={profileData.bio}
-                    onChange={(e) =>
-                      setProfileData({
-                        ...profileData,
-                        bio: e.target.value,
-                      })
-                    }
-                  />
-                </div>
-                <Button type="submit" className="mt-4">
-                  Update Profile
-                </Button>
-              </form>
+              <ProfileForm userData={currentUserInfo} />
             </CardContent>
           </Card>
         </TabsContent>
