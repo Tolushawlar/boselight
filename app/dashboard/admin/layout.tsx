@@ -2,9 +2,9 @@
 
 import {
   User,
-  DollarSign,
-  Calendar,
-  Settings,
+  // DollarSign,
+  // Calendar,
+  // Settings,
   LogOut,
   LayoutDashboard,
   Users,

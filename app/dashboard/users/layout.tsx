@@ -3,10 +3,10 @@
 import { ReactNode } from "react";
 import {
   Home,
-  User,
-  DollarSign,
-  Calendar,
-  Settings,
+  // User,
+  // DollarSign,
+  // Calendar,
+  // Settings,
   LogOut,
 } from "lucide-react";
 import {
