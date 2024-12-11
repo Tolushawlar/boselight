@@ -6,10 +6,12 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Logo } from "./Logo";
 import { Button } from "@/components/ui/button";
+import { useUser } from "@clerk/nextjs";
 
 export function Header() {
   const [hasScrolled, setHasScrolled] = useState(false);
   const { push } = useRouter();
+  const { user } = useUser();
 
   useEffect(() => {
     const updateScroll = () => {
@@ -19,6 +21,13 @@ export function Header() {
     window.addEventListener("scroll", updateScroll);
     return () => window.removeEventListener("scroll", updateScroll);
   }, []);
+
+  const handleRoute = () => {
+    if (user) {
+      return push("/dashboard/users");
+    }
+    push("/login");
+  };
 
   return (
     <motion.header
@@ -69,10 +78,10 @@ export function Header() {
           transition={{ duration: 0.5 }}
         >
           <Button
-            className="bg-[#E97B5F] hover:bg-[#E97B5F]/90 text-white fontTomorrow" 
-            onClick={() => push("/register")}
+            className="bg-[#E97B5F] hover:bg-[#E97B5F]/90 text-white fontTomorrow"
+            onClick={handleRoute}
           >
-            Register →
+            {user ? "Dashboard" : "Get Started →"}
           </Button>
         </motion.div>
       </div>
