@@ -7,7 +7,7 @@ import { useState } from "react";
 export function Faq() {
   const faqItems = [
     {
-      question: "How does Boselight work?",
+      question: "How does Boslight work?",
       answer:
         "Boselight provides finanical services to people in need through a secure and transparent platform. We verify all cases and ensure your services reaches the right person.",
     },

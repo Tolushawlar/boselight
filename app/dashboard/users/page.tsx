@@ -1,6 +1,7 @@
 import { currentUser } from "@clerk/nextjs/server";
-import { User, DollarSign, Calendar } from "lucide-react";
+// import { User, DollarSign, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import LoanApply from "./LoanApply";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -14,13 +15,13 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ProfileForm } from "@/components/user/profile-form";
 
 export default async function UserDashboard() {
-  const user = await currentUser();
+    const user = await currentUser();
 
-  const currentUserInfo = JSON.parse(JSON.stringify(user));
+    const currentUserInfo = JSON.parse(JSON.stringify(user));
 
   return (
     <div className="flex-1 overflow-y-auto p-8">
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-8">
+      {/* <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-8">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">
@@ -82,12 +83,12 @@ export default async function UserDashboard() {
             </p>
           </CardContent>
         </Card>
-      </div>
+      </div> */}
       <Tabs defaultValue="profile" className="w-full">
         <TabsList>
           <TabsTrigger value="profile">Profile</TabsTrigger>
-          <TabsTrigger value="donations">Donations</TabsTrigger>
-          <TabsTrigger value="volunteering">Volunteering</TabsTrigger>
+          <TabsTrigger value="Loan Application">Loan Application</TabsTrigger>
+          {/* <TabsTrigger value="volunteering">Volunteering</TabsTrigger> */}
         </TabsList>
         <TabsContent value="profile">
           <Card>
@@ -114,21 +115,21 @@ export default async function UserDashboard() {
             </CardContent>
           </Card>
         </TabsContent>
-        <TabsContent value="donations">
+        <TabsContent value="Loan Application">
           <Card>
             <CardHeader>
-              <CardTitle>Donations</CardTitle>
+              <CardTitle>Loan Application</CardTitle>
               <CardDescription>
-                View your donation history and make new donations.
+                To send in your loan application, please fill the form below
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <p>Your recent donations will be displayed here.</p>
-              <Button className="mt-4">Make a New Donation</Button>
+              <LoanApply />
+              <Button className="mt-4">Apply</Button>
             </CardContent>
           </Card>
         </TabsContent>
-        <TabsContent value="volunteering">
+        {/* <TabsContent value="volunteering">
           <Card>
             <CardHeader>
               <CardTitle>Volunteering</CardTitle>
@@ -142,7 +143,7 @@ export default async function UserDashboard() {
               <Button className="mt-4">Find Volunteering Opportunities</Button>
             </CardContent>
           </Card>
-        </TabsContent>
+        </TabsContent> */}
       </Tabs>
     </div>
   );

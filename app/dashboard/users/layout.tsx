@@ -26,10 +26,10 @@ import { SignOutButton } from "@clerk/nextjs";
 
 const NavItems = [
   { icon: Home, label: "Dashboard", href: "#" },
-  { icon: User, label: "Profile", href: "#" },
-  { icon: DollarSign, label: "Donations", href: "#" },
-  { icon: Calendar, label: "Volunteering", href: "#" },
-  { icon: Settings, label: "Settings", href: "#" },
+  // { icon: User, label: "Profile", href: "#" },
+  // { icon: DollarSign, label: "Donations", href: "#" },
+  // { icon: Calendar, label: "Volunteering", href: "#" },
+  // { icon: Settings, label: "Settings", href: "#" },
 ];
 
 const UserDashboardLayout = ({ children }: { children: ReactNode }) => {

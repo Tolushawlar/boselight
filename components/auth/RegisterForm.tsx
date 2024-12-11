@@ -70,7 +70,7 @@ export const RegisterForm = ({ setPendingVerification }: RegisterFormProps) => {
           </h1>
 
           <p className="text-gray-600">
-            Join Helping Hand and start making a difference
+            Join us today and start making a difference
           </p>
         </div>
 

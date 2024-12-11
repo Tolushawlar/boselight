@@ -7,6 +7,7 @@ import { DonationCard } from "@/components/DonationCard";
 import { Faq } from "@/components/Faq";
 import { Newsletter } from "@/components/Newsletter";
 import { Footer } from "@/components/Footer";
+import { TestimonalCard } from "@/components/TestimonialCard";
 
 const Home = () => {
   const donationCards = [
@@ -72,6 +73,33 @@ const Home = () => {
     },
   ];
 
+  const testimonials = [
+    {
+      name: "Folashade Olaniyan",
+      title: "Happy Homeowner",
+      headline: "A Dream Come True",
+      description:
+        "Your easy application process and competitive interest rates made my homeownership dream a reality. Thank you for making it so simple.",
+      image: "/testimonial2.jpg",
+    },
+    {
+      name: "Kunle Adeyemi",
+      title: "Satisfied Customer",
+      headline: "Professional and Efficient",
+      description:
+        "The team at Boslight was incredibly helpful and knowledgeable. They guided me through the entire process and ensured I got the best deal.",
+      image: "/testimonial3.jpg",
+    },
+    {
+      name: "John Emeka",
+      title: "Thriving Entrepreneur",
+      headline: "A Game-Changer",
+      description:
+        "Your quick loan approval and flexible repayment terms gave my business the boost it needed. I'm grateful for your support.",
+      image: "/testimonial4.jpg",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-[#F9F5E8]">
       {/* Hero Section */}
@@ -87,7 +115,7 @@ const Home = () => {
         <div className="container px-4 mx-auto">
           <h2 className="text-5xl font-bold text-center mb-16">
             How We <span className="text-blue-500">Stand Out</span> From Others
-          </h2> 
+          </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {donationCards.map((card, index) => (
               <DonationCard key={index} {...card} index={index} />
@@ -97,6 +125,22 @@ const Home = () => {
       </section>
 
       <Faq />
+
+      {/* <Testimonal />> */}
+      <section id="features" className="py-24 bg-[#F9F5E8]">
+        {/* <NewDonationCard /> */}
+        <div className="container px-4 mx-auto">
+          <h2 className="text-5xl font-bold text-center mb-16">
+            Hear What Our <span className="text-blue-500">Customers Say</span>{" "}
+            About Us
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {testimonials.map((card, index) => (
+              <TestimonalCard key={index} {...card} index={index} />
+            ))}
+          </div>
+        </div>
+      </section>
 
       <Newsletter />
 
