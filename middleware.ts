@@ -25,24 +25,6 @@ export default clerkMiddleware(async (auth, req) => {
     return NextResponse.redirect(new URL("/", req.url));
   }
 
-  // Redirect authenticated admin users from the landing page `/` to `/dashboard/admin`
-  if (
-    isAuthenticated &&
-    url.pathname === "/" &&
-    ["superAdmin", "admin"].includes(role)
-  ) {
-    return NextResponse.redirect(new URL("/dashboard/admin", req.url));
-  }
-
-  // Redirect authenticated non-admin users from `/` to `/dashboard/users`
-  if (
-    isAuthenticated &&
-    url.pathname === "/" &&
-    !["superAdmin", "admin"].includes(role)
-  ) {
-    return NextResponse.redirect(new URL("/dashboard/users", req.url));
-  }
-
   // Admin and SuperAdmin role access
   if (admin(req)) {
     if (["superAdmin", "admin"].includes(role)) {
@@ -52,14 +34,32 @@ export default clerkMiddleware(async (auth, req) => {
     }
   }
 
-  // Non-Admin or SuperAdmin authenticated users
+  // Prevent admin users from accessing `/dashboard/users`
+  if (user(req) && ["superAdmin", "admin"].includes(role)) {
+    return NextResponse.redirect(new URL("/dashboard/admin", req.url));
+  }
+
+  // Redirect non-admin users trying to access admin routes
+  if (
+    isAuthenticated &&
+    !["superAdmin", "admin"].includes(role) &&
+    admin(req)
+  ) {
+    return NextResponse.redirect(new URL("/dashboard/users", req.url));
+  }
+
+  // Allow non-admin users to access `/` and their dashboard
   if (isAuthenticated && !["superAdmin", "admin"].includes(role)) {
-    if (!user(req)) {
+    if (user(req)) {
+      return NextResponse.next(); // Allow user dashboard access
+    }
+    // Do not redirect from `/`
+    if (url.pathname !== "/") {
       return NextResponse.redirect(new URL("/dashboard/users", req.url));
     }
   }
 
-  // Allow all other requests to proceed
+  // Allow all other requests to proceed, including `/`
   return NextResponse.next();
 });
 
