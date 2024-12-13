@@ -34,7 +34,10 @@ export function Feature() {
   };
 
   return (
-    <div id="about" className="w-full bg-[#F9F5E8] space-y-8 py-12 md:py-16 lg:py-20">
+    <div
+      id="about"
+      className="w-full bg-[#F9F5E8] space-y-8 py-12 md:py-16 lg:py-20"
+    >
       <motion.div
         initial="initial"
         animate="animate"
@@ -42,11 +45,11 @@ export function Feature() {
         className="container px-4 md:px-6"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-          {cardData.map((card, i) => (
+          {cardData.map((card) => (
             // eslint-disable-next-line react/jsx-key
             <div className="grid grid-col-1 md:grid-col-0 gap-4">
               <div
-                key={i}
+                key={card.title}
                 className="bg-white rounded-3xl p-6 shadow-sm max-h-[500px] w-[91vw] md:w-[96vw] flex flex-row"
               >
                 <div className="mb-4 flex flex-row w-[90vw] items-center justify-between rounded-2xl">
@@ -90,7 +93,6 @@ export function Feature() {
             </div>
           ))}
         </div>
-
 
         <motion.div variants={fadeInUp} className="mt-8">
           <Card className="overflow-hidden rounded-3xl border-none bg-blue-500 p-8 text-white">
