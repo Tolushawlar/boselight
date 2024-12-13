@@ -1,14 +1,8 @@
 "use client";
 
+import { SignOutButton } from "@clerk/nextjs";
 import { ReactNode } from "react";
-import {
-  Home,
-  // User,
-  // DollarSign,
-  // Calendar,
-  // Settings,
-  LogOut,
-} from "lucide-react";
+import { Home, LogOut } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -22,14 +16,10 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { Logo } from "@/components/Logo";
-import { SignOutButton } from "@clerk/nextjs";
+import { ROUTE } from "@/constants";
 
 const NavItems = [
-  { icon: Home, label: "Dashboard", href: "#" },
-  // { icon: User, label: "Profile", href: "#" },
-  // { icon: DollarSign, label: "Donations", href: "#" },
-  // { icon: Calendar, label: "Volunteering", href: "#" },
-  // { icon: Settings, label: "Settings", href: "#" },
+  { icon: Home, label: "Dashboard", href: ROUTE.USER_DASHBOARD },
 ];
 
 const UserDashboardLayout = ({ children }: { children: ReactNode }) => {

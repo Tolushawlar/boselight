@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import {
   useReactTable,
   getCoreRowModel,
@@ -13,7 +12,10 @@ import {
   SortingState,
   ColumnFiltersState,
 } from "@tanstack/react-table";
-import { LoanApplicationType } from "@/types/database.types";
+import { ChevronDown } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -30,10 +32,9 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown } from "lucide-react";
 import { useGetLoanApps } from "@/hooks/use-get-loan-app";
 import { LoanApplicationModal } from "./loan-application-modal";
-import { useRouter } from "next/navigation";
+import { LoanApplicationType } from "@/types/database.types";
 import { ROUTE } from "@/constants";
 
 const columns: ColumnDef<LoanApplicationType>[] = [

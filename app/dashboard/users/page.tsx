@@ -83,10 +83,10 @@ export default async function UserDashboard() {
           </CardContent>
         </Card>
       </div> */}
-      <Tabs defaultValue="profile" className="w-full">
+      <Tabs defaultValue="loanApplication" className="w-full">
         <TabsList>
           <TabsTrigger value="profile">Profile</TabsTrigger>
-          <TabsTrigger value="Loan Application">Loan Application</TabsTrigger>
+          <TabsTrigger value="loanApplication">Loan Application</TabsTrigger>
         </TabsList>
         <TabsContent value="profile">
           <Card>
@@ -114,7 +114,7 @@ export default async function UserDashboard() {
           </Card>
         </TabsContent>
 
-        <TabsContent value="Loan Application">
+        <TabsContent value="loanApplication">
           <Card>
             <CardHeader>
               <CardTitle>Loan Application</CardTitle>

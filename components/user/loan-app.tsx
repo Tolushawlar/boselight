@@ -2,6 +2,7 @@
 
 import { User } from "@clerk/nextjs/server";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -14,7 +15,6 @@ import { NextOfKinSection } from "./next-of-kin";
 import { LoanAppDto, loanFormSchema } from "@/schemas/loan";
 import supabase from "@/supabase";
 import { Database } from "@/types/database.types";
-import { Loader2 } from "lucide-react";
 
 export function LoanApplicationForm({ userData }: { userData: User }) {
   const [isLoading, setIsLoading] = useState(false);
