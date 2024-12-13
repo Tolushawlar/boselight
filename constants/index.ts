@@ -44,3 +44,12 @@ export const loanTypeOptions = [
   { value: "study", label: "Study Loan", disabled: true },
   { value: "travel", label: "Travel Loan (POF)", disabled: false },
 ];
+
+
+export const ROUTE ={
+  HOME: "/",
+  LOGIN: "/login",
+  REGISTER: "/register",
+  ADMIN_DASHBOARD: "/dashboard/admin",
+  USER_DASHBOARD: "/dashboard/users"
+}

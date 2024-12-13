@@ -1,14 +1,7 @@
 "use client";
 
-import {
-  User,
-  // DollarSign,
-  // Calendar,
-  // Settings,
-  LogOut,
-  LayoutDashboard,
-  Users,
-} from "lucide-react";
+import { SignOutButton } from "@clerk/nextjs";
+import { LogOut, LayoutDashboard, Users, File } from "lucide-react";
 import { ReactNode } from "react";
 import Link from "next/link";
 
@@ -25,16 +18,11 @@ import {
   SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { Logo } from "@/components/Logo";
-import { SignOutButton } from "@clerk/nextjs";
 
 const NavItems = [
-  { icon: LayoutDashboard, label: "Dashboard", href: "#" },
+  { icon: LayoutDashboard, label: "Dashboard", href: "/dashboard/admin" },
+  { icon: File, label: "Applications", href: "/dashboard/admin/applications" },
   { icon: Users, label: "Users", href: "#" },
-  // { icon: DollarSign, label: "Donations", href: "#" },
-  // { icon: Calendar, label: "Volunteering", href: "#" },
-  { icon: User, label: "Profile", href: "#" },
-  // { icon: DollarSign, label: "Donations", href: "#" },
-  // { icon: Settings, label: "Settings", href: "#" },
 ];
 
 const AdminDashboardLayout = ({ children }: { children: ReactNode }) => {

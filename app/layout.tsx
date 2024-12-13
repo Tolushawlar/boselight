@@ -1,7 +1,6 @@
 import { ClerkProvider } from "@clerk/nextjs";
 import type { Metadata } from "next";
 import { Rubik } from "next/font/google";
-import { Toaster } from "@/components/ui/sonner";
 
 import "./globals.css";
 import "@fontsource/tomorrow/100.css";
@@ -10,6 +9,7 @@ import "@fontsource/tomorrow/300.css";
 import "@fontsource/tomorrow/400.css";
 import "@fontsource/tomorrow/500.css";
 import "@fontsource/lato";
+import { RootProviders } from "@/components/root-provider";
 
 const rubik = Rubik({
   subsets: ["latin"],
@@ -31,12 +31,7 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={`${rubik.variable} antialiased`}>
-          {children}
-          <Toaster
-            position="bottom-right"
-            toastOptions={{ duration: 5000 }}
-            richColors
-          />
+          <RootProviders>{children}</RootProviders>
         </body>
       </html>
     </ClerkProvider>

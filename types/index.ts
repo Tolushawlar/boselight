@@ -1,8 +1,12 @@
-export type User = {
-  id: string;
-  name: string;
-  email: string;
-  status: "active" | "inactive";
-  role: string;
-  lastActive: string;
+export type KinData = {
+  kinTitle: string;
+  kinSurname: string;
+  kinFirstName: string;
+  kinOtherName?: string;
+  kinDateOfBirth: Date | string; 
+  kinRelationship: string;
+  kinGender: string;
+  kinAddress: string;
+  kinEmail: string;
+  kinPhoneNumber: string;
 };
