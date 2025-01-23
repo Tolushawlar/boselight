@@ -1,7 +1,5 @@
 import { currentUser } from "@clerk/nextjs/server";
-// import { User, DollarSign, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import LoanApply from "./LoanApply";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
@@ -13,11 +11,12 @@ import {
 } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { ProfileForm } from "@/components/user/profile-form";
+import { LoanApplicationForm } from "@/components/user/loan-app";
 
 export default async function UserDashboard() {
-    const user = await currentUser();
+  const user = await currentUser();
 
-    const currentUserInfo = JSON.parse(JSON.stringify(user));
+  const currentUserInfo = JSON.parse(JSON.stringify(user));
 
   return (
     <div className="flex-1 overflow-y-auto p-8">
@@ -84,11 +83,10 @@ export default async function UserDashboard() {
           </CardContent>
         </Card>
       </div> */}
-      <Tabs defaultValue="profile" className="w-full">
+      <Tabs defaultValue="loanApplication" className="w-full">
         <TabsList>
           <TabsTrigger value="profile">Profile</TabsTrigger>
-          <TabsTrigger value="Loan Application">Loan Application</TabsTrigger>
-          {/* <TabsTrigger value="volunteering">Volunteering</TabsTrigger> */}
+          <TabsTrigger value="loanApplication">Loan Application</TabsTrigger>
         </TabsList>
         <TabsContent value="profile">
           <Card>
@@ -115,7 +113,8 @@ export default async function UserDashboard() {
             </CardContent>
           </Card>
         </TabsContent>
-        <TabsContent value="Loan Application">
+
+        <TabsContent value="loanApplication">
           <Card>
             <CardHeader>
               <CardTitle>Loan Application</CardTitle>
@@ -124,26 +123,10 @@ export default async function UserDashboard() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <LoanApply />
-              <Button className="mt-4">Apply</Button>
+              <LoanApplicationForm userData={currentUserInfo} />
             </CardContent>
           </Card>
         </TabsContent>
-        {/* <TabsContent value="volunteering">
-          <Card>
-            <CardHeader>
-              <CardTitle>Volunteering</CardTitle>
-              <CardDescription>
-                Check your volunteering schedule and sign up for new
-                opportunities.
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p>Your upcoming volunteering events will be shown here.</p>
-              <Button className="mt-4">Find Volunteering Opportunities</Button>
-            </CardContent>
-          </Card>
-        </TabsContent> */}
       </Tabs>
     </div>
   );

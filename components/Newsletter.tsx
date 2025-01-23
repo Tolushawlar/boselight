@@ -28,10 +28,10 @@ export function Newsletter() {
           Apply online today and let us help you achieve your financial goals.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-          {cardData.map((card, i) => (
+          {cardData.map((card) => (
             <div className="grid grid-cols-1 md:grid-cols-0 gap-4">
               <div
-                key={i}
+                key={card.title}
                 className="bg-white rounded-3xl p-6 shadow-sm max-h-[500px]"
               >
                 <div className="mb-4 overflow-hidden rounded-2xl">
@@ -54,7 +54,10 @@ export function Newsletter() {
             </div>
           ))}
         </div>
-        <div id="contact" className="bg-[#E17153] rounded-3xl p-8 md:p-12 text-center">
+        <div
+          id="contact"
+          className="bg-[#E17153] rounded-3xl p-8 md:p-12 text-center"
+        >
           <div>
             <h2 className="text-2xl md:text-5xl font-bold text-white mb-4">
               Get in Touch With Us
